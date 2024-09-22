@@ -25,7 +25,6 @@ func (h *Handler) RegisterRoutes(router *mux.Router) {
 }
 
 func (h *Handler) handlerLogin(w http.ResponseWriter, r *http.Request) {
-
 }
 
 // get JSON payload and check if user exists. If it doesn't we create new user.
@@ -42,7 +41,7 @@ func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
 		errors := err.(validator.ValidationErrors)
 		utils.WriteError(w, http.StatusBadRequest, fmt.Errorf("invalid payload %v", errors))
 		return
-	}; 
+	} 
 	
 	// check if the user exists
 	_, err := h.store.GetUserByEmail(payload.Email)

@@ -7,9 +7,17 @@
     {
       "name": "Go debugger",
       "type": "go",
-      "request": "attach",
-      "mode": "local",
-      "processId": 0
+      "request": "launch",
+      "mode": "auto",
+      "program": "cmd/main.go",
+      "env": {
+        "DB_USER": "goecomuser",
+        "DB_PASSWORD": "mypassword",
+        "DB_HOST": "127.0.0.1",
+        "DB_PORT": "3306",
+        "DB_NAME": "goecom"
+      },
+      "args": []
     }
   ]
 }
