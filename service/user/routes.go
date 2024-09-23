@@ -43,13 +43,13 @@ func (h *Handler) handlerLogin(w http.ResponseWriter, r *http.Request) {
 	// check if the user exists
 	u, err := h.store.GetUserByEmail(payload.Email)
 	if err != nil {
-		utils.WriteError(w, http.StatusBadRequest, fmt.Errorf("not found, invalid email or password", payload.Email))
+		utils.WriteError(w, http.StatusBadRequest, fmt.Errorf("not found, invalid email or password: %v", payload.Email))
 		return
 	}
 
 	// check if password matches
 	if !auth.ComparePassowords(u.Password, []byte(payload.Password)) {
-		utils.WriteError(w, http.StatusBadRequest, fmt.Errorf("not found, invalid email or password", payload.Email))
+		utils.WriteError(w, http.StatusBadRequest, fmt.Errorf("not found, invalid email or password: %v", payload.Email))
 		return
 	}
 
